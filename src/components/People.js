@@ -1,35 +1,28 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
+import "./People.css";
+function People({ charData }) {
+  const { name, birth_year, height } = charData;
+  const [isOpen, setIsOpen] = useState(false);
 
-function People({item,index}) {
-    const { name, birth_year, height } = item
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <div>
-             <button className="card_title_container"
-                onClick={() => setIsOpen(!isOpen)}
-                aria-expanded={isOpen}
-                // aria-controls={`sec${+index + 1}`}
-                // id={`card${+index + 1}p`}
-                data-allow-toggle
-            >
-           {name}
-          
-           </button>
-           {isOpen && <div className="card_content"
-                // id={`sec${+index + 1}`}
-                // aria-labelledby={`card${+index + 1}p`}
-                // role="region"
-                >
-
-                <p tabIndex="0" >Name: {name}</p>
-                <p tabIndex="0">Year born : {birth_year}</p>
-                <p tabIndex="0" >Height: {height}</p>
-
-            </div>}
-          
+  return (
+    <div>
+      <button
+        className="card_container"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        data-allow-toggle
+      >
+        <h4>{name}</h4>
+      </button>
+      {isOpen && (
+        <div className="card_content">
+          <p tabIndex="0">Name: {name}</p>
+          <p tabIndex="0">Year born : {birth_year}</p>
+          <p tabIndex="0">Height: {height}</p>
         </div>
-    )
+      )}
+    </div>
+  );
 }
 
-export default People
+export default People;
