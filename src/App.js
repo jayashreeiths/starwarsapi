@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+
+
 import People from "./components/People";
 import headerBackground from "./images/header-background.png";
 
 function App() {
   const [people, setPeople] = useState(null);
+  const [charInput, setCharInput] = useState(null);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState({ prev: false, next: true });
-  const [charInput, setCharInput] = useState(null);
+ 
 
   useEffect(() => {
+    document.title = "Starwars API";  
     (async () => {
       const req = await fetch("https://swapi.dev/api/people");
       const res = await req.json();
@@ -50,6 +54,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <header>
         <div className="head-text">
           <div className="head-image">
